@@ -64,6 +64,10 @@
 })();
 
 async function insertWhiteBoard(imageUrl, id) {
+  if (window.qtCore) {
+    window.qtCore.InsertWhiteBoard(imageUrl,id);
+    return;
+  }
   await webBrowserObj.InsertWhiteBoard(imageUrl, id);
 }
 
