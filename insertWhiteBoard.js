@@ -46,7 +46,7 @@
         formData,
         function (res) {
           if (res.state === "1") {
-            insertWhiteBoard(res.data.filePath, res.data.id);
+            insertWhiteBoard(res.data.filePath, res.data.id, content);
             showTips("success", res.code);
           } else {
             showTips("error", res.code);
@@ -63,9 +63,9 @@
   };
 })();
 
-async function insertWhiteBoard(imageUrl, id) {
+async function insertWhiteBoard(imageUrl, id, base64Image) {
   if (window.qtCore) {
-    window.qtCore.InsertWhiteBoard(imageUrl,id);
+    window.qtCore.insertWhiteBoard(imageUrl, id, base64Image);
     return;
   }
   await webBrowserObj.InsertWhiteBoard(imageUrl, id);
